@@ -1,4 +1,3 @@
-// CartScreen.tsx
 import React from 'react';
 import {View, Text, FlatList, Image, Button, StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';

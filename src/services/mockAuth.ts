@@ -1,15 +1,12 @@
 import * as Keychain from 'react-native-keychain';
 
-// Store mock user credentials securely
 export const signupUser = async (email: string, password: string) => {
   try {
-    // Check if the user already exists
     const existingCredentials = await Keychain.getGenericPassword();
     if (existingCredentials && existingCredentials.username === email) {
       return {success: false, message: 'User already exists'};
     }
 
-    // Store new user credentials securely
     await Keychain.setGenericPassword(email, password);
     return {success: true};
   } catch (error) {
@@ -18,7 +15,6 @@ export const signupUser = async (email: string, password: string) => {
   }
 };
 
-// Authenticate user credentials against stored credentials
 export const authenticateUser = async (email: string, password: string) => {
   try {
     const credentials = await Keychain.getGenericPassword();
